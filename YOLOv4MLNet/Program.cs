@@ -1,4 +1,4 @@
-﻿using Microsoft.ML;
+using Microsoft.ML;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,12 +15,14 @@ namespace YOLOv4MLNet
     //https://towardsdatascience.com/yolo-v4-optimal-speed-accuracy-for-object-detection-79896ed47b50
     class Program
     {
+        
         private static object BufferLock = new object();
         // model is available here:
         // https://github.com/onnx/models/tree/master/vision/object_detection_segmentation/yolov4
         const string modelPath = @"D:\model\yolov4.onnx";
-
-        const string imageFolder = @"C:\Users\91930\Desktop\Net\441_ЦиЧжэнь\photo\Assets\Images";
+        //string imageFolder = Console.ReadLine();
+        //await Detector.DetectImage(imageFolder);
+        //const string imageFolder = @"C:\Users\91930\Desktop\Net\441_ЦиЧжэнь\photo\Assets\Images";
 
         const string imageOutputFolder = @"C:\Users\91930\Desktop\Net\441_ЦиЧжэнь\photo\Assets\Output";
 
@@ -35,6 +37,8 @@ namespace YOLOv4MLNet
         {
             Directory.CreateDirectory(imageOutputFolder);
             MLContext mlContext = new MLContext();
+            Console.WriteLine("Write input path: ");
+            string imageFolder = Console.ReadLine();
             
             // model is available here:
             // https://github.com/onnx/models/tree/master/vision/object_detection_segmentation/yolov4
